@@ -1,14 +1,21 @@
+--So könnte ein SELECT aussehen
+
 SELECT 
 	SPALTEN as A , Spalte2 as B, Mathe, 'TXT', SP*
 from Tabelle
 where 
 		SP > < <=  >=  != =   <>
-		AND|OR
+		AND|OR --AND ist stärker bindend
 		SP < > = != <> <= >=
 		AND|OR
-		SP between wert1 and wert2
+		SP between wert1 and wert2  --ersetzt sp >= and Sp <=
 		AND|OR
-		SP IN (Wert1, Wert2, Wert3,,,)
+		SP IN (Wert1, Wert2, Wert3,,,) --ersetzt sp= and sp= and Sp=
+		AND|OR
+		SP like -- nur die kann Wildcards
+				-- % beliebig viele Zeichen
+				-- _ steht für genau ein Zeichen
+				-- [] steht für genau ein Zeichen
 
 
 
@@ -80,13 +87,74 @@ select * from orders --nur die wo
 where
 	freight < 100
 	AND
-	(employeeid = 3
+	employeeid = 3
 	OR
-	shipcity = 'london')
+	shipcity = 'london'
+order by freight desc
+
+
+--unscharfe Suche LIKE
+
+select * from customers
+where
+		companyname like 'A%'
+
+
+--wieviele Firman haben am Ende ein y
+
+
+select * from customers
+where companyname  like '%y'
+
+--(505) 555-59_9
+
+select * from customers
+where phone like '%9%'
+--% viele Stelle
+--_ genau eine stelle
+
+--Welche Firma hat an 3. letzter Stelle eine 9 in der Phone Spalte
+
+select companyname, phone from customers
+	where 
+			phone like '%9__'
+
+
+--SPALTE PIN
+
+--varchar(4)
+
+where pin like '[0-9][0-9][0-9][0-9]'-- Frage mit > 0 und < 10000 klappt das nicht
 
 
 
-select * from orders
+--[0-9]
+--[a-z]
+
+
+--Suche wir alle Firman die mit A B C  G H M beginnen
+
+select * from customers
+where
+		companyname like '[abcghm]%' --die Klammer steht für genau ein Zeichen
+order by companyname desc
+
+select * from customers
+where
+		companyname like '%[%]%'
+
+--Suche nach allen Firmen, die ein ' im Namen haben
+
+
+select * from customers
+where
+		companyname like '%''%' -- 2 ' steht für ein '
+
+
+
+
+
+
 
 
 
