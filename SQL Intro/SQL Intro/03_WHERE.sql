@@ -2,7 +2,7 @@
 
 SELECT 
 	SPALTEN as A , Spalte2 as B, Mathe, 'TXT', SP*
-from Tabelle
+from Tabelle t
 where 
 		SP > < <=  >=  != =   <>
 		AND|OR --AND ist stärker bindend
@@ -15,7 +15,11 @@ where
 		SP like -- nur die kann Wildcards
 				-- % beliebig viele Zeichen
 				-- _ steht für genau ein Zeichen
-				-- [] steht für genau ein Zeichen
+				-- [] steht für genau ein Zeichen [0-9|a-z][agk]
+order by sp desc|asc, sp2 desc
+
+
+
 
 
 

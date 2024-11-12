@@ -3,7 +3,13 @@ from
 		Tabelle1 A inner join Tabelle2 B  on A.spx = BNspx
 				   inner join Tabelle3 C  on c.spy = B.spy
 				   inner join Tabelle4 D  on D.spz = A.spz
-
+			  left|right join Tabelle5 E on E.spa = B.spa
+where 
+		a.spx = 
+		or 
+		e.spy < 
+order by 
+		b.spm
 
 
 
@@ -22,23 +28,7 @@ from
 	orders o inner join [Order Details] od on o.OrderID=od.OrderID;
 	GO
 		--	inner join 
-			 
-create or alter view UmsatzKunden
-as
-select		c.CompanyName, c.CustomerID, c.Country, c.city,
-			o.orderid, o.orderdate, o.freight,
-			od.UnitPrice, od.Quantity,
-			p.ProductName,
-			e.lastname
-from 
-						   customers c 
-				inner join orders o				on c.CustomerID=o.CustomerID
-				inner join Employees e			on e.EmployeeID=o.EmployeeID
-			    inner join [Order Details] od   on od.orderid  = o.orderid
-				inner join products p           on p.ProductID = od.ProductID;
-GO
-
-
+--Sicht = Views
 
 
 select * from umsatzkunden
@@ -51,7 +41,8 @@ country = 'UK'
 
 
 
-
+--Self Join.. man darf auch die selbe Tabelle joinen, muss allerdings ihr verschiedene
+--Aliase zuweisen
 
 select lastname, country, city from employees
 

@@ -55,5 +55,12 @@ select datename(dw,getdate())
 select EOMONTH(getdate())-- letzter Tag des Monats
 
 
+select 'ABCDEFGHIJK', left('ABCDEFGHIJK',4)+ right('ABCDEFGHIJK',4)
+
+select left(reverse('abcdefghikf'),4)
+
+
+
+
 
 
